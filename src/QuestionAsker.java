@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.text.*;
 
 public class QuestionAsker {
 	
@@ -29,22 +30,30 @@ public class QuestionAsker {
 	String verifyString(String question) {
 		System.out.println(question);
 		String response = input.nextLine();
+		if (response.equals("quit"))  {
+			System.exit(0);
+		}
 		
 		// future code to verify string is valid.
 		
 		return response;
 	}
 	
-	int returnInt(String question) {
+	int returnInt(String question, Boolean negativesOK) {
 		System.out.println(question);
 		
-		while (true) {
-			int response = input.nextInt();
-			input.nextLine();
-			if (response > 0) {
-				return response;
+		if (!negativesOK) {
+			while (true) {
+				int response = input.nextInt();
+				input.nextLine();
+				if (response > 0) {
+					return response;
+				}
+				System.out.println("Please enter a realistic (positive) number!");
 			}
-			System.out.println("Please enter a realistic number!");
 		}
+		int response = input.nextInt();
+		input.nextLine();
+		return response;
 	}
 }
