@@ -10,7 +10,7 @@ public class FortuneTellerApp {
 		int userBirthMonth;
 		String favColor;
 		String help = "The ROYGBIV Colors are "
-				+ "red, orange, yellow, blue, indigo, violet.";
+				+ "red, orange, yellow, green, blue, indigo, violet.";
 		int noSiblings;
 		
 		Scanner input = new Scanner(System.in);
@@ -27,27 +27,40 @@ public class FortuneTellerApp {
 			userBirthMonth = asker.returnInt(nameFirst + " you do know there are only 12 months in a year, right?"
 					+ "\nSo, what month were you born in, using numbers?");
 		}
+		
+		/* when asking for color, we need to make sure choices fall within ROYBGIV or suggest 'help' if
+		 * the user doesn't know what ROYGBIV stands for.
+		 */
+		
 		boolean colorPicked = false;
-		while (!colorPicked) {
+		
+		do  {
 			
 			favColor = asker.verifyString(nameFirst + " what is your favorite color in the rainbow (ROYBGIV)?"
-					+ "\n**Type 'Help' if you're not sure what ROYBGIV stands for.**)");
-			favColor.toLowerCase();
-			if (favColor == "help") {
+					+ " **Type 'Help' if you're not sure what ROYGBIV stands for.**");
+			
+			favColor = favColor.toLowerCase(); // make sure response is lowerCase to work with if statement.
+			
+			if (favColor.equals("red") || favColor.equals("orange")
+					|| favColor.equals("yellow") || favColor.equals("green")
+					|| favColor.equals("blue")   || favColor.equals("indigo") 
+					|| favColor.equals("violet") ) {
+				System.out.println(favColor + " is a great color!");
+				colorPicked = true;
+			}
+			else if (favColor.equals("help")) {
 				System.out.println(help);
 			}
-			else if (favColor != "red" || favColor != "Orange" || favColor != "yellow" 
-					|| favColor != "blue" || favColor != "indigo" || favColor != "violet") {
-				System.out.println("I recommend you type 'Help' inorder to pick a valid color");
-			}
 			else {
-			colorPicked = true;
+				System.out.println("I recommend you type 'Help' inorder to pick a valid color.");
 			}
 		}
+		while (colorPicked == false);
+		
 		System.out.println("Finally " + nameFirst + ", how many siblings do you have?");
 		noSiblings = input.nextInt();
 		input.nextLine();
 		
-		System.out.println("END");
+		System.out.println("TEMP END");
 	}
 }
