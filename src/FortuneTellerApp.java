@@ -99,19 +99,19 @@ public class FortuneTellerApp {
 		String modeOfTransport = ""; 
 		
 		switch (favColor) {
-			case "red":    modeOfTransport = "Harley Davidson";
+			case "red":    modeOfTransport = "motorcycle";
 				 		   break;
-			case "orange": modeOfTransport = "Donkey";
+			case "orange": modeOfTransport = "donkey";
 						   break;
-			case "yellow": modeOfTransport = "FFR 818C";
+			case "yellow": modeOfTransport = "race car";
 						   break;
-			case "green":  modeOfTransport = "VW Bug";
+			case "green":  modeOfTransport = "frisbee";
 			               break;
-			case "blue":   modeOfTransport = "Fighter Jet";
+			case "blue":   modeOfTransport = "fighter jet";
 			   			   break;
-			case "indigo": modeOfTransport = "Rocket Ship";
+			case "indigo": modeOfTransport = "rocket ship";
 			   			   break;
-			case "violet": modeOfTransport = "Unicorn";
+			case "violet": modeOfTransport = "unicorn";
 			   			   break;				
 		}
 		
@@ -135,6 +135,5 @@ public class FortuneTellerApp {
 				+ " with " + defaultFormat.format(bankBalance) + " in the bank, a vacation home in " + vacationHome
 				+ ", and travel by " + modeOfTransport + ".");
 	}
-	
 }
 

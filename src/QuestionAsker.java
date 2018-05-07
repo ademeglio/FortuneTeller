@@ -30,7 +30,7 @@ public class QuestionAsker {
 	String verifyString(String question) {
 		System.out.println(question);
 		String response = input.nextLine();
-		if (response.equals("quit"))  {
+		if (response.toLowerCase().equals("quit"))  {
 			System.exit(0);
 		}
 		
@@ -44,16 +44,23 @@ public class QuestionAsker {
 		
 		if (!negativesOK) {
 			while (true) {
-				int response = input.nextInt();
-				input.nextLine();
-				if (response > 0) {
-					return response;
+				String response = input.nextLine();
+				if (response.toLowerCase().equals("quit"))  {
+					System.exit(0);//input.nextLine();
+				}
+				int responseInt = Integer.parseInt(response);
+
+				if (responseInt > 0) {
+					return responseInt;
 				}
 				System.out.println("Please enter a realistic (positive) number!");
 			}
 		}
-		int response = input.nextInt();
-		input.nextLine();
-		return response;
+		String response = input.nextLine();
+		if (response.toLowerCase().equals("quit")) {
+			System.exit(0);
+		}
+		int responseInt = Integer.parseInt(response);
+		return responseInt;
 	}
 }
