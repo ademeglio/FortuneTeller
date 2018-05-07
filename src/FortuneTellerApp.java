@@ -1,9 +1,18 @@
+/*
+ * Fortune Teller App.
+ * WeCodeIT Columbus FlexCode Summer 2018 
+ * Anthony J. DeMeglio
+ * ademeglio@bartha.com | ademeglio@gmail.com
+ * May 7, 2018
+ */
+
 import java.util.Scanner;
 import java.text.NumberFormat;
 
 public class FortuneTellerApp {
 
 	public static void main(String[] args) {
+		// Part 1 asks user questions needed for telling their fortune
 		// Part 1 variables
 		String nameFirst;
 		String nameLast;
@@ -11,7 +20,7 @@ public class FortuneTellerApp {
 		int userBirthMonth;
 		String favColor;
 		String help = "The ROYGBIV Colors are "
-				+ "red, orange, yellow, green, blue, indigo, violet.\n";
+				+ "red, orange, yellow, green, blue, indigo, violet.";
 		int noSiblings;
 		
 		Scanner input = new Scanner(System.in);
@@ -42,11 +51,14 @@ public class FortuneTellerApp {
 			favColor = asker.verifyString(nameFirst + " what is your favorite color in the rainbow (ROYBGIV)?"
 					+ " **Type 'Help' if you're not sure what ROYGBIV stands for.**");
 			
-			favColor = favColor.toLowerCase(); // make sure response is lowerCase to work with if statement.
+			favColor = favColor.toLowerCase(); // make sure response is lowerCase to work with if statement and switch.
 			
-			if (favColor.equals("red") || favColor.equals("orange")
-					|| favColor.equals("yellow") || favColor.equals("green")
-					|| favColor.equals("blue")   || favColor.equals("indigo") 
+			if (favColor.equals("red") 
+					|| favColor.equals("orange")
+					|| favColor.equals("yellow") 
+					|| favColor.equals("green")
+					|| favColor.equals("blue")   
+					|| favColor.equals("indigo") 
 					|| favColor.equals("violet") ) {
 				System.out.println(favColor + " is a great color!");
 				colorPicked = true;
@@ -62,6 +74,8 @@ public class FortuneTellerApp {
 		
 		noSiblings = asker.returnInt("Finally " + nameFirst + ", how many siblings do you have?", true);
 		
+		// Part 2 acts on the questions asked of the user.
+		
 		// Part 2: retirement years 
 		int retireInYears;
 		
@@ -70,16 +84,15 @@ public class FortuneTellerApp {
 		} else {
 		retireInYears = 13;
 		}
-		
 	
 		// Part 2: vacation home location
-		String[] vacationHomeChoices = {  //No of siblings
-				"Ambergris Caye, Belize", // 0
-				"Paris, France",          // 1
-				"Anaheim, CA",            // 2
-				"Orlando, FL",            // 3
-				"Estes Park, CO",         // 4+
-				"North Pole"};            // <0
+		String[] vacationHomeChoices = {  // Location | No. of siblings
+				"Ambergris Caye, Belize", // | 0
+				"Paris, France",          // | 1
+				"Anaheim, CA",            // | 2
+				"Orlando, FL",            // | 3
+				"Estes Park, CO",         // | 4+
+				"North Pole"};            // | <0
 		
 		String vacationHome = "";
 		
@@ -92,7 +105,6 @@ public class FortuneTellerApp {
 			}
 			else vacationHome = vacationHomeChoices[4];
 		}
-		
 		
 		// Part 2: mode of transportation
 		
@@ -129,7 +141,7 @@ public class FortuneTellerApp {
 			bankBalance = 3.86;
 		}
 		
-		// Part 3 user's fortune is...
+		// Part 3 Program output: user's fortune is...
 		
 		System.out.println(nameFirst + " " + nameLast + " will retire in " + retireInYears + " years"
 				+ " with " + defaultFormat.format(bankBalance) + " in the bank, a vacation home in " + vacationHome
