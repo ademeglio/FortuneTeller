@@ -79,7 +79,8 @@ public class QuestionAsker {
 	}
 	
 	public static boolean isInteger(String s) {
-	      boolean isValidInteger = false;
+	    // reference https://learn-java-by-example.com/java/check-java-string-integer/  
+		boolean isValidInteger = false;
 	      try
 	      {
 	         Integer.parseInt(s);
