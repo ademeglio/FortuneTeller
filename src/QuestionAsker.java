@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.text.*;
 
 public class QuestionAsker {
 	
@@ -29,38 +28,71 @@ public class QuestionAsker {
 	
 	String verifyString(String question) {
 		System.out.println(question);
-		String response = input.nextLine();
-		if (response.toLowerCase().equals("quit"))  {
-			System.exit(0);
+		boolean isInteger;
+		while (true) {
+			String response = input.nextLine();
+			if (response.toLowerCase().equals("quit"))  {
+				System.exit(0);
+			}
+			isInteger = isInteger(response);
+			if (!isInteger) {
+				return response;
+			}
+			System.out.println("Please enter valid text, no numbers. Thank you.");
 		}
-		
-		// future code to verify string is valid.
-		
-		return response;
 	}
 	
 	int returnInt(String question, Boolean negativesOK) {
 		System.out.println(question);
-		
+		boolean isInteger;
 		if (!negativesOK) {
 			while (true) {
 				String response = input.nextLine();
 				if (response.toLowerCase().equals("quit"))  {
-					System.exit(0);//input.nextLine();
+					System.exit(0);
 				}
-				int responseInt = Integer.parseInt(response);
-
-				if (responseInt > 0) {
-					return responseInt;
+				// If String != "quit" then make sure it is a valid string
+				isInteger = isInteger(response);
+				if (isInteger) {
+					int responseInt = Integer.parseInt(response);
+					if (responseInt > 0) {
+						return responseInt;
+					}
+					System.out.println("Please enter a realistic (positive) number!");	
+				} else {
+					System.out.println("Please enter a valid integer or type 'Quit' to end the progam.");
 				}
-				System.out.println("Please enter a realistic (positive) number!");
 			}
 		}
-		String response = input.nextLine();
-		if (response.toLowerCase().equals("quit")) {
-			System.exit(0);
+		while (true) {
+			String response = input.nextLine();
+			if (response.toLowerCase().equals("quit")) {
+				System.exit(0);
+			}
+			isInteger = isInteger(response);
+			if (isInteger) {
+				int responseInt = Integer.parseInt(response);
+				return responseInt;
+			}
+			System.out.println("Please enter a valid integer or type 'Quit' to end the progam.");
 		}
-		int responseInt = Integer.parseInt(response);
-		return responseInt;
+	}
+	
+	public static boolean isInteger(String s) {
+	      boolean isValidInteger = false;
+	      try
+	      {
+	         Integer.parseInt(s);
+	 
+	         // s is a valid integer
+	 
+	         isValidInteger = true;
+	      }
+	      catch (NumberFormatException ex)
+	      {
+	         // s is not an integer
+	      }
+	 
+	      return isValidInteger;
 	}
 }
